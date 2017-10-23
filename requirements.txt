@@ -1,14 +1,2 @@
-setuptools
-coverage
+Django
 cryptography
-Django>=1.9.4
-django_coverage
-flake8
-ipython
-mock
-pep8
-psycopg2
-pyflakes
-pytz
-yolk
-freezegun
