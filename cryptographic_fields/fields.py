@@ -22,13 +22,13 @@ def get_crypter():
     try:
         # Allow the use of key rotation
         if isinstance(configured_keys, (tuple, list)):
-            keys = [cryptography.fernet.Fernet(str(k)) for k in configured_keys]
+            keys = [cryptography.fernet.Fernet(k) for k in configured_keys]
         else:
             # else turn the single key into a list of one
-            keys = [cryptography.fernet.Fernet(str(configured_keys)), ]
+            keys = [cryptography.fernet.Fernet(configured_keys), ]
     except Exception as e:
         raise ImproperlyConfigured(
-            'FIELD_ENCRYPTION_KEY defined incorrectly: {}'.format(str(e))), None, sys.exc_info()[2]
+            'FIELD_ENCRYPTION_KEY defined incorrectly: {}'.format(str(e)))
 
     if len(keys) == 0:
         raise ImproperlyConfigured('No keys defined in setting FIELD_ENCRYPTION_KEY')
