@@ -5,7 +5,7 @@ from django.core.exceptions import ImproperlyConfigured
 
 import cryptography.fernet
 
-import fields
+from cryptographic_fields import fields
 
 
 class TestSettings(TestCase):
@@ -17,8 +17,12 @@ class TestSettings(TestCase):
         with self.settings(FIELD_ENCRYPTION_KEY=self.key1):
             fields.get_crypter()
 
+    def test_settings_tuple(self):
+
         with self.settings(FIELD_ENCRYPTION_KEY=(self.key1, self.key2,)):
             fields.get_crypter()
+
+    def test_settings_list(self):
 
         with self.settings(FIELD_ENCRYPTION_KEY=[self.key1, self.key2, ]):
             fields.get_crypter()
