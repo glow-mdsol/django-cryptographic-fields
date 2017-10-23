@@ -68,3 +68,19 @@ encryption key to set as ``settings.FIELD_ENCRYPTION_KEY``.
 Running this command will print an encryption key to the terminal, which can
 be configured in your environment or settings file.
 
+Development Environment
+-----------------------
+
+Added Tox for testing with different versions of Django and Python, to get started
+   pip install -r dev-requirements.txt
+
+Using `pyenv` add the requisite python interpreters
+   pyenv install 3.6.3
+   pyenv install 3.5.4
+   pyenv install 2.7.14
+
+Add the requisite versions to the local version
+   pyenv local 2.7.14 3.5.4 3.6.3
+
+Run `tox`
+   tox
